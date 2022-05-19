@@ -41,7 +41,7 @@ namespace Excappalitas.Interactable {
                 generatorActivated = true;
                 return true;
             }
-            return true;
+            return false;
         }
 
         private bool IsFailedFillOnce() {
@@ -49,7 +49,7 @@ namespace Excappalitas.Interactable {
                 failedFill = true;
                 return IsFailedFill();
             }
-            return true;
+            return false;
         }
 
         private bool IsFailedFill() 

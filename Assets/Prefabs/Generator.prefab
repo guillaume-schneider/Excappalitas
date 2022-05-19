@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2578582609433716922}
-  - component: {fileID: 1524461820}
   - component: {fileID: 1113080896311437007}
   - component: {fileID: 8909553813687820263}
+  - component: {fileID: 8675780802897379984}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -33,21 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1524461820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2578582609433716923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e54d8ada9a0a2841a7d93bc9a1e26fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ResetOnRelease: 1
-  FillRateTimeReached: 1.84
-  FailedFillProbability: 1.37
 --- !u!58 &1113080896311437007
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -77,3 +62,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResetOnExit: 0
+--- !u!114 &8675780802897379984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578582609433716923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1accee0466b30384cbc5f70867f35a8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResetOnRelease: 0
+  FillRateTimeReached: 4.14
+  FailedFillProbability: 4.06

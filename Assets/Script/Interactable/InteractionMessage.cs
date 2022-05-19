@@ -12,7 +12,7 @@ namespace Excappalitas.Interactable {
         private int interactableID;
         private InputComponents[] inputs;
 
-        public InteractionMessage(int interactableID, Transform caller = null, params InputComponents[] inputs) {
+        public InteractionMessage(int interactableID, Transform caller, params InputComponents[] inputs) {
             this.interactableID = interactableID;
             Caller = caller;
 

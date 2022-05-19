@@ -1,5 +1,7 @@
 using Excappalitas.AI.States;
 using Excappalitas.AI.Strategy;
+using Excappalitas.LevelLogic.Generator;
+using Excappalitas.Interactable;
 using UnityEngine;
 
 namespace Excappalitas.AI
@@ -33,11 +35,11 @@ namespace Excappalitas.AI
         }
 
         private void OnEnable() {
-            Excappalitas.Interactable.GeneratorInteractable.OnFailedFill += OnAlarmEvent;
+            GeneratorInteractable.OnGeneratorActivated += OnAlarmEvent;
         }
 
         private void OnDisable() {
-            Excappalitas.Interactable.GeneratorInteractable.OnFailedFill -= OnAlarmEvent;
+            GeneratorInteractable.OnGeneratorActivated -= OnAlarmEvent;
         }
 
         private void Start () {
