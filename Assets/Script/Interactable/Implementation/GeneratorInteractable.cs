@@ -5,10 +5,10 @@ namespace Excappalitas.Interactable {
     public class GeneratorInteractable : Interactable {
 
         /// <sumary> return interactable and the interacter </sumary>
-        public static System.Action<Transform, Transform> OnFailedFill;
+        public event System.Action<Transform, Transform> OnFailedFill;
 
         /// <sumary> return interactable and the interacter </sumary>
-        public static System.Action<Transform, Transform> OnGeneratorActivated;
+        public event System.Action<Transform, Transform> OnGeneratorActivated;
 
         [SerializeField] private bool ResetOnRelease;
 
@@ -21,7 +21,7 @@ namespace Excappalitas.Interactable {
 
         public override void OnInteract(InteractionMessage message) {
             base.OnInteract(message);
-            if (HasValueReachPourcentage(fillValue, 99)) {
+            if (HasValueReachPourcentage(fillValue, 99) && !HasActivatedOnce()) {
                 OnGeneratorFilled(message.Caller);
                 return;
             }
@@ -30,25 +30,13 @@ namespace Excappalitas.Interactable {
         }
 
         private void OnGeneratorFilled(Transform filler) {
-            if (IsFailedFillOnce() && OnFailedFill != null) 
-                OnFailedFill(this.transform, filler);
-            if (IsGeneratorActivatedOnce() && OnGeneratorActivated != null) 
-                OnGeneratorActivated(this.transform, filler);
+            if (IsFailedFill() && OnFailedFill != null) OnFailedFill(this.transform, filler);
+            if (OnGeneratorActivated != null) OnGeneratorActivated(this.transform, filler);
         }
 
-        private bool IsGeneratorActivatedOnce() {
-            if (!generatorActivated)  {
-                generatorActivated = true;
-                return true;
-            }
-            return false;
-        }
-
-        private bool IsFailedFillOnce() {
-            if (!failedFill) {
-                failedFill = true;
-                return IsFailedFill();
-            }
+        private bool HasActivatedOnce() {
+            if (generatorActivated) return true;
+            generatorActivated = true;
             return false;
         }
 

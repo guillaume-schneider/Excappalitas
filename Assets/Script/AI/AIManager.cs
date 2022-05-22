@@ -1,7 +1,7 @@
 using Excappalitas.AI.States;
 using Excappalitas.AI.Strategy;
-using Excappalitas.LevelLogic.Generator;
 using Excappalitas.Interactable;
+using Excappalitas.Logic.Generator;
 using UnityEngine;
 
 namespace Excappalitas.AI
@@ -34,12 +34,10 @@ namespace Excappalitas.AI
             _stateMachine = new StateMachine<AIManager>(this, Idle.Instance);
         }
 
-        private void OnEnable() {
-            GeneratorInteractable.OnGeneratorActivated += OnAlarmEvent;
-        }
-
         private void OnDisable() {
-            GeneratorInteractable.OnGeneratorActivated -= OnAlarmEvent;
+            foreach (var generator in GeneratorManager.Instance.Generators) {
+                generator.Events.OnGeneratorActivated -= OnAlarmEvent;
+            }        
         }
 
         private void Start () {
@@ -47,6 +45,10 @@ namespace Excappalitas.AI
             _pursuitStrategy = GetComponent<PursuitStrategy>();
             _stats = GetComponent<AIStats>();
             targetFinder = GetComponent<TargetFinder>();
+
+            foreach (var generator in GeneratorManager.Instance.Generators) {
+                generator.Events.OnGeneratorActivated += OnAlarmEvent;
+            }
         }
 
         private void Update() 
